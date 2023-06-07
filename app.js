@@ -20,7 +20,7 @@ dotenv.config();
 routes(App)
 
 //middleware
-App.use(bodyParser());
+App.use(express.urlencoded({ extended: true}))
 App.use(bodyParser.json());
 App.use(express.json());
 
