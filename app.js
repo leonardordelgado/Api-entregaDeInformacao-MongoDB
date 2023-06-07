@@ -25,5 +25,5 @@ App.use(bodyParser.json());
 App.use(express.json());
 
 //inicio do servidor para a porta especiicada em .env
-App.listen(process.env.PORT_SERVER,
-    ()=> console.log(`Servidor rodando na porta ${process.env.PORT_SERVER}`));
+App.listen(process.env.PORT,
+    ()=> console.log(`Servidor rodando na porta ${process.env.PORT}`));
