@@ -2,7 +2,8 @@ import Users from "../models/User.js";
 import {ValidaUser} from "../validacoes/validacoesUser.js";
 import bcrypt, { hash } from 'bcrypt';
 import { ObjectId } from "bson";
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 class ControlesUser{
     
 
@@ -14,7 +15,7 @@ class ControlesUser{
                 email: req.body.email,
                 senha: req.body.senha
             }
-            bcrypt.genSalt(10, (erro, salt)=>{
+            bcrypt.genSalt(process.env.SALTS, (erro, salt)=>{
                 bcrypt.hash(NovoUsers.senha, salt, async(erro, hash)=>{
                     if(erro){
                         res.status(400).send({message: `houve um erro ao salvar usuario`})
