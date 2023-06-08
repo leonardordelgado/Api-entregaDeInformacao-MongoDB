@@ -1,10 +1,14 @@
 import express  from "express";
 import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
-import db from "./src/db/conetionDB.js";
+import dbMongo from "./src/db/conetionDBMongo.js";
+import dbMysql from "./src/db/conetionDBMysql.js";
 import routes from "./src/routers/index.js";
 
 const App = express();
+
+
+
 
 //segurança cabeçalho de envio de informções
 var allowCrossDomain = function(req, res, next) {
@@ -22,7 +26,7 @@ routes(App)
 //middleware
 App.use(express.urlencoded({ extended: true}))
 App.use(bodyParser.json());
-App.use(express.json());
+
 
 //inicio do servidor para a porta especiicada em .env
 App.listen(process.env.PORT,

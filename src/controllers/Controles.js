@@ -1,4 +1,8 @@
 import Posts from "../models/Posts.js";
+import Users from "../models/User.js";
+import {ValidaUser} from "../validacoes/validacoesUser.js";
+import bcrypt, { hash } from 'bcrypt';
+
 import { ObjectId } from "bson";
 class Controles{
     static ListaPost = async(req, res, next)=>{
@@ -10,7 +14,7 @@ class Controles{
         }catch (erro){
             res.status(500).send(erro)
         }
-    }
+    };
     static InsertPost = async (req, res, next)=>{
         try{
             const existe = await Posts.findOne({titulo: req.body.titulo})
@@ -25,7 +29,7 @@ class Controles{
         }catch (erro){
             res.status(500).send(erro)
         }
-    }
+    };
     static DeletePost = async (req, res, next)=>{
         try{
             const filter = {_id: new ObjectId(`${req.params.id}`)}
@@ -38,7 +42,7 @@ class Controles{
         }catch (erro){
 
         }
-    }
+    };
     static UpdatePost = async (req ,res, next)=>{
         try{
             const filter = {_id: new ObjectId(`${req.params.id}`)}
@@ -52,7 +56,7 @@ class Controles{
         }catch (erro){
             res.status(500).send(erro)
         }
-    }
-}
+    };  
+};
 
 export default Controles;
