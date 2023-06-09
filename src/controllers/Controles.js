@@ -18,13 +18,15 @@ class Controles{
     static InsertPost = async (req, res, next)=>{
         try{
             const existe = await Posts.findOne({titulo: req.body.titulo})
-            console.log(existe)
+            
             if(existe == null){
                 let post = new Posts(req.body)
                 await post.save()
                     .then((resposta)=>{
                         res.status(201).json(resposta)
                     })
+            }else{
+                res.status(400).send({message: "Ja existe post com esse titulo"})
             }
         }catch (erro){
             res.status(500).send(erro)

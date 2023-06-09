@@ -11,8 +11,13 @@ const post = new mongoose.Schema({
     },
     texto:{
         type: String,
-         required:[true,"A descrição e obrigatoria"]
+         required:[true,"O texto e obrigatorio"]
     },
+    previaText:{
+        type: String,
+        required:[true,"A previa  e obrigatoria"]
+    }
+
 },
 {
     versionKey:false
