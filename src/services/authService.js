@@ -7,9 +7,9 @@ dotenv.config()
 
 class AuthService {
     async login(dto) {
-        const usuario = await Users.findOne({ attributes: ['id', 'email', 'senha'], where: { email: dto.email } })
-
-
+        
+        //const usuario = await Users.findOne({ attributes: ['id', 'email', 'senha'],{ email: dto.email } })
+        const usuario = await Users.findOne({email: dto.email}).select('id email senha')
         if (!usuario){ throw new Error('Usuario não cadastrado')}
 
         const senhas = await bcrypt.compare(dto.senha, usuario.senha)
@@ -24,6 +24,7 @@ class AuthService {
                 expiresIn: 1800 
             }
         )
+        
         return { accestoken }
     }
 }

@@ -3,7 +3,6 @@ const authService = new AuthService();
 
 class ControlesLogin{
     static async login(req, res){
-        console.log(req)
         const {email, senha} = req.body
         try{
             const login = await authService.login({email,senha})

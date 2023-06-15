@@ -2,7 +2,7 @@ import express  from "express";
 import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import dbMongo from "./src/db/conetionDBMongo.js";
-import dbMysql from "./src/db/conetionDBMysql.js";
+
 import routes from "./src/routers/index.js";
 
 const App = express();

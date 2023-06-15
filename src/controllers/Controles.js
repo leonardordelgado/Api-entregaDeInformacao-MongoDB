@@ -1,7 +1,5 @@
 import Posts from "../models/Posts.js";
-import Users from "../models/User.js";
-import {ValidaUser} from "../validacoes/validacoesUser.js";
-import bcrypt, { hash } from 'bcrypt';
+
 
 import { ObjectId } from "bson";
 class Controles{

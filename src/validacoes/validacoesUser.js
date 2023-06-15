@@ -1,4 +1,4 @@
-import Users from "../models/User.js"
+import Users from '../models/User.js'
 
 export async function ValidaUser(req, res){
     const erros = []
@@ -20,7 +20,7 @@ export async function ValidaUser(req, res){
     if(erros.length > 0){
        return erros
     }else{
-        const user =  await Users.findOne({where:{email: req.body.email}})
+        const user =  await Users.findOne({email:req.body.email})
         if(user == null){
             return true
         }else{

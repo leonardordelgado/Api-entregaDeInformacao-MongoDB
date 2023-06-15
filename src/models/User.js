@@ -1,27 +1,23 @@
-import {Sequelize} from 'sequelize';
-import dbMysql from '../db/conetionDBMysql.js';
+import mongoose from "mongoose";
 
-const Users = dbMysql.define('users',{
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
+const users = new mongoose.Schema({
+    name:{
+        type: String, 
+        required: [true,"O titulo e obrigatorio"]
     },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    email: {
-        type: Sequelize.STRING,
-        allowNull: false
+    email:{
+        type: String,
+         required:[true,"A descrição e obrigatoria"]
     },
     senha:{
-        type: Sequelize.STRING,
-        allowNull: false
-    }
+        type: String,
+         required:[true,"O texto e obrigatorio"]
+    },
+    
 
+},
+{
+    versionKey:false
 });
-Users.sync();
-
+const Users = mongoose.model('Users', users);
 export default Users;
